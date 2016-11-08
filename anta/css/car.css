@@ -1,0 +1,182 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: none;
+}
+ul,ol,dl{
+	list-style-type: none;
+}
+.body{
+	width: 100%;
+	height: 100%;
+}
+.top{
+	width: 100%;
+	height: 24px;
+	background: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.top1{
+	width: 1062px;
+	height: 24px;
+	margin: 0 auto;
+}
+.top1{
+	font:12px/24px "宋体";
+	color: #6680b3;
+}
+.top1 a{
+	color: #6680b3;
+}
+.top1 p{
+	float: left;
+}
+.top1 a:hover{
+	color: red;
+}
+.top1 .top1_span{
+	color: #e20000;
+}
+.top1_ul{
+	float: right;
+}
+.top1_ul li{
+	float: left;
+	padding: 0 8px;
+	border-left: 1px solid #e8e8e8;
+	height: 24px;
+}
+.top2{
+	width: 100%;
+	height: 92px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 33px;
+}
+.top3{
+	width: 1062px;
+	height: 92px;
+	margin: 0 auto;
+}
+.top3 a{
+	margin-right: 440px;
+	float: left;
+	margin-top: 10px;
+}
+.goods{
+	width: 943px;
+	height: 100%;
+	margin: 0 auto;
+}
+.goods h4{
+	font: 20px/32px "黑体";
+}
+.cart{
+	width: 446px;
+	height: 98px;
+	border: 1px solid #ccc;
+	background: #f5f5f5;
+	padding-left: 245px;
+	padding-right: 250px;
+	display: none;
+}
+.cart span{
+	float: right;
+	font: 12px/98px "宋体";
+}
+.cart_bottom{
+	width: 100%;
+	height: 212px;
+	background: #f5f5f5;
+	border-top: 1px solid #ccc;
+	margin-top: 18px;
+}
+.cart_bottom_img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+/* goods_cart */
+.goods_cart{
+	/* display: none; */
+}
+.goods_cart_table{
+	width: 943px;
+	height: 100%;
+	margin: 0 auto;
+}
+.goods_cart_table{
+	border-spacing: 0;
+}
+.goods_cart_table thead td{
+	font:13px/46px "宋体";
+}
+.goods_cart_table thead{
+	background: #f5f5f5;
+
+}
+.tr1{
+	width: 943px;
+	height: 80px;
+}
+.tr1 td{
+	font:12px/17px "宋体";
+}
+.tr1 .tr1_a{
+	font: 13px/20px "宋体";
+}
+.tr1_ipt{
+	width: 78px;
+	height: 30px;
+	float: left;
+}
+.tr1_a1{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #ccc;
+	float: left;
+	text-align: center;
+	font: 15px/2 "宋体";
+}
+.tr2_box a{
+	font: 13px/3 "宋体";
+}
+.tr2 .tr2_p{
+	font:15px/25px "宋体";
+}
+.tr2 .tr2_p .tr2_span2{
+	font: 20px/25px "宋体";
+}
+.tr2 .tr2_p span{
+	padding-left: 15px;
+	color: #d00;
+}
+.pay a{
+	display: block;
+	width: 130px;
+	height: 35px;
+	float: right;
+	margin:10px 7px;
+	font: 12px/35px "宋体";
+}
+.pay .pay2{
+	border:1px solid #ccc;
+	border-radius: 3px;
+	color: #000;
+}
+.pay .pay1{
+	border:1px solid #dd0000;
+	border-radius: 3px;
+	background: #dd0000;
+	color: #fff;
+}
+.tr4{
+	background: #f5f5f5; 
+}
+

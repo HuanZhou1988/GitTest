@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>安踏会员系统</title>
+	<link rel="stylesheet" href="css/login.css"/>
+	<script type="text/javascript" src = "js/tool.js"></script>
+	<script type="text/javascript" src = "js/perfect_startMove (2).js"></script>
+	<style type="text/css">
+		#div_code{width: 120px; height: 36px; background-color: #f3fbfe; color:#177e4a; text-align: center; line-height: 36px; font-size: 20px;}
+		span{height: 10px; font-size: 13px; color :red;}
+		.show{
+			width: 398px;
+			height: 54px;
+			border:1px solid #d6d6d6;
+			border-radius: 5px;
+			margin-top:12px; 
+			text-indent: 20px;
+			font: 16px/54px "宋体";
+		}
+		.no{
+			width: 398px;
+			height: 54px;
+			border-radius: 5px;
+			margin-top:12px; 
+			text-indent: 20px;
+			font: 16px/54px "宋体";
+			border:1px solid #d71722;
+			background: #fdf5f0;
+		}
+		.aa{
+			display: block;
+			width: 194px;
+			height: 48px;
+			background: #fff;
+			
+			border-radius: 5px;
+			border: 1px solid #d71722;
+			font: 18px/48px "黑体";
+			text-align: center;
+			color: #d71722;
+			margin-top: 15px;
+			float: right;
+		}
+		.a3{
+			margin-top: 27px;
+			float: left;
+			background: #d71722;
+			
+			color: #fff;
+		}
+	
+		#input_code_span{
+			width: 398px;
+			height: 26px;
+			background: #fdf5f3;
+			color: #de195c;
+			font: 13px/2 "宋体";
+		}
+		#username_span,#password_span,#password_span2{
+			margin-left: -135px;
+			font: 12px/54px "宋体";
+		}
+		#box11{
+			position: relative;
+			margin-bottom: 15px;
+		}
+		#box10{
+			width: 120px; height: 36px;
+			position: absolute;left: 264px;top:22px;
+			padding-left: 10px;
+			border-left: 1px dashed #d6d6d6;
+		}
+		.enter{
+			color: #d71722;
+			text-decoration: underline;
+			font: 16px/53px "宋体";
+			margin: 0 auto;
+		}
+		.enter:hover{
+			text-decoration: none;
+		}
+		.enter1{
+			width: 100%;
+			height: 53px;
+			text-align: center;
+		}
+		.a1{
+			display: block;
+			font:12px/1 "宋体";
+			color: #000;
+			float: right;
+		}
+		.a1:hover{
+			color: #d71722;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var login_box_3 = document.getElementById('login_box_3');
+			var oa = login_box_3.getElementsByTagName('a');
+			for(var i = 0;i<oa.length;i++){
+				oa[i].index = i;
+				oa[oa[i].index].onmouseover=function(){
+					startMove(oa[this.index],{marginTop:-52},15);
+				}
+				oa[oa[i].index].onmouseout=function(){
+					startMove(oa[this.index],{marginTop:0},15);
+				}
+			}
+
+			var boxx = document.getElementById('login_box_2A');
+			var ipt = boxx.getElementsByTagName('input');
+			var spn = boxx.getElementsByTagName('span');
+
+			$("#div_code").innerHTML = testCode(4);
+			$("#div_code").onclick = function(){
+				// this.innerHTML = testCode(4);
+				$("#div_code").innerHTML = testCode(4);
+			}
+			$("#a2").onclick = function(){
+				if($("#input_code").value == $("#div_code").innerHTML){
+					$("#input_code_span").innerHTML = "";
+				}
+				else{
+					$("#div_code").innerHTML = testCode(4);
+					$("#input_code_span").innerHTML = "验证码错误!";
+					$("#input_code").className = "no";
+					$("#input_code").value = "";
+
+				}
+					if(ipt[0].value==""){
+						$("#username_span").innerHTML="账户有误，请重新输入";
+						ipt[0].className = "no";
+					}
+					if(ipt[1].value==""){
+						$("#password_span").innerHTML="密码有误，请重新输入";
+						ipt[1].className = "no";
+					}
+
+					/*alert(getCookie("username"));*/
+					if(ipt[0].value == getCookie("username") && ipt[1].value == getCookie("password") && $("#input_code_span").innerHTML ==""){
+						alert("登录成功");
+						window.location.href = "home.html";
+					}else if(ipt[0].value == getCookie("username") && ipt[1].value!= getCookie("password") && $("#input_code_span").innerHTML ==""){
+						$("#password_span").innerHTML="密码有误，请重新输入";
+						ipt[1].className = "no";
+					}else if($("#input_code_span").innerHTML!=""){
+
+					}
+					else{
+						$("#username_span").innerHTML="账户有误，请重新输入";
+						ipt[0].className = "no";
+					}
+			}
+			
+			for(var i = 0;i<3;i++){
+				ipt[i].index = i;
+				ipt[ipt[i].index].onclick = function(){
+					this.className = "show";
+					spn[1+this.index].innerHTML = "";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="login">
+		<p class="ppt"><img src="images/login/logo.png" alt=""/></p>
+		<div class="login_box">
+
+			<!-- login_box_1 -->
+			<div class="login_box_1">
+				<a class = "login_box_1_1" href="home.html"> <返回安踏官网</a>
+				<img src="images/login/02.png" alt=""/>
+			</div>
+			
+			<!-- login_box_2 -->
+			<div class="login_box_2">
+				<div id = "login_box_2A">
+					<h1>账户登录</h1>
+					<span id = "input_code_span"> </span><br />
+					<input class="show" type="text" placeholder = "账户/邮箱/手机"/><span id = "username_span"></span><br />
+					<input class="show" type="password" placeholder = "密码"/><span id = "password_span"></span><br />
+					<div id = "box11"> 
+						<input id = "input_code" class="show" placeholder = "验证码" />
+						<div id ="box10"><div id = "div_code"></div><br /></div>
+					</div>
+					<div><a href="##" class = "a1">忘记密码？</a></div>
+					<a href="##" class="aa a3" id="a2">登录</a>
+					<a href="login.html" class="aa">免费注册</a>
+				</div>
+				<p class = "ppp1">Copyright(C) 2015 by www.anta.com</p>
+			</div>
+
+			<!-- login_box_3 -->
+			<div id="login_box_3">
+				<p>其他登录方式</p>
+				<div class = "login_box_D">
+					<a href="https://api.weibo.com/oauth2/authorize?client_id=901068105&redirect_uri=http%3A%2F%2Fpassport.anta.cn%2Findex.php%3Fg%3Dapi%26m%3Doauth%26a%3Dcallback%26type%3Dsina%26from%3D1&response_type=code"><img src="images/login/login_img1.png" alt=""><img class="img2" src="images/login/login_img1.png" alt=""></a>
+					<a href="https://graph.qq.com/oauth/show?which=Login&display=pc&client_id=100298992&redirect_uri=http%3A%2F%2Fpassport.anta.cn%2Findex.php%3Fg%3Dapi%26m%3Doauth%26a%3Dcallback%26type%3Dqq%26from%3D1&response_type=code&scope=get_user_info%2Cadd_share"><img src="images/login/login_img2.png" alt=""><img class="img2" src="images/login/login_img2.png" alt=""></a>
+				</div>
+				<div class = "login_box_D">
+					<a href="https://auth.alipay.com/login/express.htm?goto=https%3A%2F%2Fmemberexprod.alipay.com%3A443%2Fauthorize%2FuserAuthQuickLoginAction.htm%3Fe_i_i_d%3D49894048f39e96d96365d9e37894d097"><img src="images/login/login_img3.png" alt=""><img class="img2" src="images/login/login_img3.png" alt=""></a>
+					<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8c9066b25729009f&redirect_uri=http%3A%2F%2Fapi.anta.cn%2Findex.php%3Fs%3Dindex%2FchangeDomian%26return%3Dhttp%253A%252F%252Fpassport.anta.cn%252Findex.php%252Fapi%252Foauth%252Fcallback%252Ftype%252Fweixin%252Ffrom%252F2&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect"><img src="images/login/login_img4.png" alt=""><img class="img2" src="images/login/login_img4.png" alt=""></a>
+				</div>
+				<div class = "login_box_A">
+					<img src="images/login/qrcode.jpg" alt=""/>
+					<p id="pp">微信加关注 享专属优惠</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+</body>
+</html>

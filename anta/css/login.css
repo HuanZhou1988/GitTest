@@ -1,0 +1,137 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,dl,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: none;
+}
+
+.login{
+	width: 945px;
+	height: 666px;
+	margin: 30px auto;
+}
+.ppt{
+	display: block;
+	width: 236px;
+	height: 49px;
+}
+.login_box{
+	width: 943px;
+	height: 612px;
+	border: 1px solid #e2e2e2;
+}
+.login_box_1,.login_box_1 img{
+	width: 248px;
+	height: 612px;
+	position: relative;
+}
+.login_box_1_1{
+	display: block;
+	width: 230px;
+	height: 34px;
+	background: #d71921;
+	position: absolute;
+	left: 0;
+	top: -1px;
+	z-index: 1;
+	color: #fff;
+	font:16px/34px "宋体";
+	padding-left: 18px;
+}
+.login_box_1,.login_box_2,#login_box_3{
+	float: left;
+}
+
+/* login_box_2 */
+.login_box_2{
+	width: 499px;
+	height: 612px;
+}
+#login_box_2A{
+	width: 405px;
+	height: 450px;
+	margin: 22px 0 5px 49px;
+}
+#login_box_2A h1{
+	font: 24px/68px "宋体";
+}
+.login_box_a{
+	display: block;
+	width: 202px;
+	height: 40px;
+	background: #d71722;
+	float: left;
+	text-align: center;
+	font: 15px/40px "宋体";
+	color: #fff;
+}
+.login_box_aa{
+	display: block;
+	float: left;
+	text-align: center;
+	font: 15px/40px "宋体";
+	width: 201px;
+	height: 38px;
+	border: 1px solid #d6d6d6;
+	border-left: none;
+	color: #000;
+	background: #e4e4e4;
+}
+.login_box_2 .ppp{
+	margin-top: 45px;
+	font: 14px/32px "宋体";
+	text-indent: 35px;
+	color: #a5a5c2;
+}
+.login_box_2 .ppp1{
+	margin-top: 100px;
+	font: 14px/32px "宋体";
+	text-indent: 35px;
+	color: #a5a5c2;
+}
+/*#login_box_3 */
+#login_box_3{
+	width: 195px;
+	height: 555px;
+	border-left: 1px solid #e2e2e2;
+	padding-top: 57px;
+}
+#login_box_3 p{
+	font: 18px/50px "宋体";
+	text-align: center;
+}
+.login_box_D{
+	width: 153px;
+	height: 52px;
+	margin-bottom: 15px;
+	padding-left: 42px;
+	overflow: hidden;
+}
+.login_box_D a{
+	display: block;
+	width: 52px;
+	height: 104px;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 0px 7px 0 0;
+}
+.img2{
+	margin-top: -3px;
+}
+.login_box_A{
+	width: 195px;
+	height: 202px;
+	padding-top: 170px;
+	text-align: center;
+}
+.login_box_A #pp{
+	font:12px/30px "黑体";
+}
