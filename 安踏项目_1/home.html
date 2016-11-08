@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>安踏品牌官方网站:ANTA brandsite</title>
+	<link rel = "stylesheet" type = "text/css" href="css/home.css"/>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src = "js/perfect_startMove.js"></script>
+	<script>
+
+	window.onload = function(){
+		/*Menu*/
+		
+
+
+		$(".over").on("mouseout",function(){
+				$("#Menu").css("display","none");
+		})
+		$("#Menu").on("mouseover",function(){
+				$("#Menu").css("display","block");
+		})
+		$("#Menu").on("mouseout",function(){
+				$("#Menu").css("display","none");
+		})
+
+	$.ajax({
+			url:'js/home.json',
+			type:'GET',
+			success:function(res){
+				for(var i = 0;i<res.length;i++){
+					$(".over").eq(i).html("<a href='list.html'>"+res[i].series+"</a>")
+				}
+
+		
+				$(".over").on("mouseover",function(){ 
+		var html = '';
+		var i = $(this).index() - 1;
+				var sum = 0;
+		html='<div class = "Menu_box"><ul><li class = "Menu_box_li"><h2>'+res[i].type[0].title+'</h2><div class="li_box"></div></li><li class = "Menu_box_li"><h2>'+res[i].type[1].title+'</h2><div class="li_box"></div></li><li class = "Menu_box_li"><h2>'+res[i].type[2].title+'</h2><div class="li_box"></div></li><li class = "Menu_box_li" id = "Menu_li"><h2>'+res[i].type[3].title+'</h2><div class="li_box"></div></li></ul></div>';
+		$('#Menu').html(html);
+
+
+		for(var a = 0;a<res[i].type.length;a++){
+			var html1= '';
+			for(var b = 0;b<res[i].type[a].classify.length;b++){
+				html1+= '<a href="##">'+res[i].type[a].classify[b]+'</a></br>'
+			}
+			$(".li_box").eq(a).html(html1);
+				}
+
+
+
+				$("#Menu").css("display","block");
+				if(i>0&&i<5){
+	sum = $(".img1").outerWidth(true)+parseInt($(".menu").css("marginLeft"));
+					for(var a = 1;a<=i;a++){
+						sum += $(".over").eq(a-1).outerWidth(true);
+					}
+				}else if(i == 5){
+	sum = $(".img1").outerWidth(true)+parseInt($(".menu").css("marginLeft"))+65;
+				}
+				else{
+	sum = $(".img1").outerWidth(true)+parseInt($(".menu").css("marginLeft"));
+				}
+				$(".Menu_box").css("marginLeft",sum);
+		})
+				
+			}
+		})
+		
+		
+		
+			/*Roll*/
+			var roll = document.getElementById("roll");
+			var oUl = roll.getElementsByTagName("ul")[0];
+			var roll1 = document.getElementById('roll1');
+			
+			var timer = null;
+			var t = 100;
+			var timer = setInterval(function(){
+				for(var a = 0;a<3;a++){
+					$("span").eq(a).css("background","#999");				
+				}
+				if(t<300){
+					$("span").eq(t/100).css("background","#e7242c");
+					sport(oUl,t);
+					t+=100;
+				}
+				else{
+					t=0;
+					sport(oUl,t);
+					$("span").eq(t/100).css("background","#e7242c");
+					t+=100;
+				}
+			}, 3000);
+
+
+				var spn = roll1.getElementsByTagName('span');
+				var imgs = roll1.getElementsByTagName('img');
+			for(var a = 0;a<3;a++){
+					spn[a].index = a;
+					$("span").eq(a).on("click",function(){
+						t=(this.index)*100;
+						timer;
+					});
+					spn[a].onmouseover = function(){
+						startMove(imgs[this.index],{opacity:100});
+					}
+					spn[a].onmouseout = function(){
+						startMove(imgs[this.index],{opacity:0});
+					}
+				}
+
+
+
+
+			function sport(element,ima){
+				var a=ima-100;
+				var timer = setInterval(function(){
+					a+=5;
+					if(ima==0){
+						a+=5;
+						element.style.left = a-100+"%";
+						if(a==100){
+							clearInterval(timer);
+						}
+					}
+					else{
+					if(a<ima+5){	
+						element.style.left = "-"+a+"%";
+					}
+					else{
+						clearInterval(timer);
+					}}
+				},20)
+			}
+
+
+			/*goods*/
+
+			$.ajax({
+			url:'js/home_goods.json',
+			type:'GET',
+			success:function(res){
+				var html = '';
+				for(var i = 0 ; i < res.length; i ++){
+					html +='<div class="goods_pic"><a href="##"><div><img id="goods_img'+i+'" src="'+res[i].img+'" alt="1"/></div></a><h1>'+res[i].h1+'<h1/><h2><a href="##">'+res[i].h2+'</a></h2></div>';
+				}
+				$('#goods').html(html);
+				var goods_img = new Array(3);
+			 goods_img[0] = document.getElementById("goods_img0");
+			 goods_img[1] = document.getElementById("goods_img1");
+			 goods_img[2] = document.getElementById("goods_img2");
+
+			 for(var b = 0;b<3;b++){
+			 	goods_img[b].index = b;
+			 	goods_img[b].onmouseover = function(){
+				startMove(goods_img[this.index], {width: 330, height: 250, marginLeft: -18, marginTop: -10 });
+			}
+			goods_img[b].onmouseout = function(){
+				startMove(goods_img[this.index], {width: 300, height: 227, marginLeft: 0, marginTop: 0});
+			 }}
+			}
+		})
+			
+
+function getStyle(element, style){
+	if(element.currentStyle){
+		return element.currentStyle[style];
+	}else{
+		return getComputedStyle(element)[style];
+	}
+}
+
+/*Focus*/
+
+$.ajax({
+			url:'js/focus.json',
+			type:'GET',
+			success:function(res){
+				var html = '';
+				for(var i = 0 ; i < res.length; i ++){
+					html +='<div class="focus_box"><a href="##"><img src="'+res[i].img+'" alt=""/></a><h1><a href="##">'+res[i].h1+'<h1/></a><h2>'+res[i].h2+'</h2></div>';
+				}
+				$('#focus3').html(html);
+			}
+		})
+
+
+
+
+
+	var flug = true;
+	var focus1 = document.getElementById('focus1');
+	$("#focus_a").on("click",function(){
+		var timer = setInterval(function(){
+			if (flug){
+			$("#focus_a").html("关闭");
+			startMove(focus1,{"margin-bottom":0});
+			flug = false;
+		}
+		else{
+			$("#focus_a").html("更多");
+			startMove(focus1,{"margin-bottom":-200});
+			flug = true;
+		}
+		clearInterval(timer);
+	},1000)
+		
+	})
+
+		var box2 = document.getElementById('box');
+		var immg = document.getElementById('img1');
+	$("#focus_wx").on("click",function(){
+		$("#box").css("display","block");
+		$("#img1").css("display","block");
+		startMove(box2,{opacity:65});
+		startMove(img1,{opacity:100});
+	})
+	$("#box").on("click",function(){
+		startMove(box2,{opacity:0},function(){
+			$("#box").css("display","none");
+		});
+		startMove(img1,{opacity:0},function(){
+			$("#img1").css("display","none");
+		});
+	})
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<!-- Top -->
+<div class="top">
+	<div class = "box1">
+		<ul>
+			<li>欢迎来到安踏！</li>
+			<li><a class="enter" href="enter.html">〉登录</a></li>
+			<li><a class="login" href="login.html">免费注册</a></li>
+			<li class="language">语音:<a href="##"><img src="images/Top-img1.png" alt=""></a><a href="##"><img src="images/Top-img2.png" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+	<!-- Menu -->
+	<div id = "Menu">
+		<!-- <div class = "Menu_box">
+			<ul>
+							<li class = "Menu_box_li">
+								<h2></h2>
+								
+							</li>
+							<li class = "Menu_box_li">
+								<h2></h2>
+								
+							</li>
+							<li class = "Menu_box_li">
+								<h2></h2>
+								
+							</li>
+							<li class = "Menu_box_li" id = "Menu_li">
+								<h2></h2>
+								
+							</li>
+						</ul>			
+		</div> -->
+	</div>
+<div class = "Menu">
+	<div class = "menu">
+		<ul>
+			<li class = "img1"><a href="home.html"><img src="images/anta_logo.png" alt=""></a></li>
+			<li class="over"></li>
+			<li class="over"></li>
+			<li class="over"></li>
+			<li class="over"></li>
+			<li class="img3 over"></li>
+			<li class="over"></li>
+			<li><a href="##"><img style="width:25px;height:30px;margin-top:5px" src="images/20150523073504915.png" alt=""></a></li>
+			<li><a href="##"><img style="width:38px;height:16px;margin-top:13px" src="images/20150523073745734.png" alt=""></a></li>
+			<li class = "img2"><a href="##"><img src="images/20150523074710681.png" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+<!-- Roll -->
+<div id="roll">
+	<ul>
+		<li><a href="##"><img src="images/roll1.jpg" alt=""/></a></li>
+		<li><a href="##"><img src="images/roll2.jpg" alt=""/></a></li>
+		<li><a href="##"><img src="images/roll3.jpg" alt=""/></a></li>
+	</ul>
+	<div id="roll1">
+		<span class = "roll2"><img src="images/img12.png" alt=""></span>
+		<span class = ""><img src="images/img12.png" alt=""></span>
+		<span class = ""><img src="images/img12.png" alt=""></span>
+	</div>
+</div>
+
+<!-- Goods -->
+<div id="goods">
+	
+</div>
+
+
+<!-- Focus -->
+<div class = "focus">
+	<div id = "focus">
+	<span>关注我们：</span>
+	<a href="##" id="focus_wx"><img src="images/focus (1).png" alt=""></a>
+	<a href="http://weibo.com/anta"><img src="images/focus (2).png" alt=""></a>
+	</div>
+	<a id="focus_a" href="##">更多</a>
+	<div class = "focus1">
+		<div id = "focus1">	
+			<div id = "focus3">
+				
+			</div>
+			<div class = "focus3">
+				<a id="focus3_a" href="##">一键关注</a>
+				<a class="focus3_a" href="##">注册微博</a>
+			</div>
+		</div>
+	</div>
+	<div class = "focus2">
+	</div>
+</div>
+
+<!-- Bottom -->
+<div class = "bottom">
+	<div>
+	<ul>
+		<li><a href="##">人才招聘</a></li>
+		<li><a href="##">关于我们</a></li>
+		<li><a href="##">隐私政策</a></li>
+		<li><a href="##">安踏儿童</a></li>
+		<li><a href="##">安踏海外</a></li>
+		<li class="bottom-li"><a href="##">安踏投资者关系</a></li>
+	</ul>
+	</div>
+	<div>
+		<p>Copyright(C) 2015 by www.ANTA.com<span><img src="images/bottom.png" alt=""></span>闽ICP备11020421号 ©安踏体育用品有限公司版权所有</p>
+	</div>
+</div>
+<div id="box">
+	
+</div>
+<div>
+	<img id="img1" src="images/捕获.PNG" alt=""/>
+</div>
+</body>
+</html>
